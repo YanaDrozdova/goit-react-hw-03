@@ -1,11 +1,18 @@
 import css from './Contact.module.css';
+import { HiMiniUser, HiPhone } from 'react-icons/hi2';
 
 export default function Contact({ contact }) {
   return (
     <>
       <div className={css.contactInfo}>
-        <p>{contact.name}</p>
-        <p>{contact.number}</p>
+        <p className="text">
+          <HiMiniUser className={css.userIcon} />
+          {contact.name}
+        </p>
+        <p className="text">
+          <HiPhone className={css.userIcon} />
+          {contact.number}
+        </p>
       </div>
       <button type="button">Delete</button>
     </>
