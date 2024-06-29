@@ -7,13 +7,18 @@ import initialContacts from './contacts.json';
 
 export default function App() {
   const [contacts, setContacts] = useState(initialContacts);
+  const [filter, setFilter] = useState('');
+
+  const contactFound = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm />
-      <SearchBox />
-      <ContactList contacts={contacts} />
+      <SearchBox value={filter} onFilter={setFilter} />
+      <ContactList contacts={contactFound} />
     </div>
   );
 }
