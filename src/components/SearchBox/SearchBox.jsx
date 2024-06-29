@@ -5,6 +5,7 @@ export default function SearchBox({ value, onFilter }) {
     <div className={css.container}>
       <p className={css.label}>Find contacts by name</p>
       <input
+        className={css.searchBox}
         type="text"
         value={value}
         onChange={e => onFilter(e.target.value)}

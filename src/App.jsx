@@ -13,12 +13,23 @@ export default function App() {
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
+  const addContact = newContact => {
+    console.log('New contact was added', newContact);
+    setContacts(prevContacts => {
+      return [...prevContacts, newContact];
+    });
+  };
+
   return (
     <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
+      <h1 className="title">Phonebook</h1>
+      <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={contactFound} />
+      {contactFound.length > 0 ? (
+        <ContactList contacts={contactFound} />
+      ) : (
+        <p>No contact was found</p>
+      )}
     </div>
   );
 }
