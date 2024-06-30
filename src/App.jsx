@@ -20,13 +20,19 @@ export default function App() {
     });
   };
 
+  const deleteContact = contactId => {
+    setContacts(prevContacts => {
+      return prevContacts.filter(contact => contact.id !== contactId);
+    });
+  };
+
   return (
     <div>
       <h1 className="title">Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
       {contactFound.length > 0 ? (
-        <ContactList contacts={contactFound} />
+        <ContactList contacts={contactFound} onDelete={deleteContact} />
       ) : (
         <p>No contact was found</p>
       )}
